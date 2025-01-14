@@ -1,0 +1,20 @@
+{
+  "name": "reportbotdiscord",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.6.8",
+    "delay": "^6.0.0",
+    "kahoot-spam": "^1.1.8",
+    "kahoot-spammer": "^1.1.2",
+    "kahoot.js-latest": "^1.0.7",
+    "puppeteer": "^22.7.1"
+  }
+}
