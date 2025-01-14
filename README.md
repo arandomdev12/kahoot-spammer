@@ -33,8 +33,8 @@ Follow these steps to set up and run the Kahoot bot on your local machine:
 
 1. Clone this repository or download the script file.
    ```bash
-   git clone https://github.com/your-username/kahoot-bot.git
-   cd kahoot-bot
+   git clone https://github.com/jxkef/kahoot-spammer.git
+   cd kahoot-spammer
    ```
 
 2. Install the required package:
@@ -52,7 +52,7 @@ Follow these steps to set up and run the Kahoot bot on your local machine:
 
 Run the script using Node.js:
 ```bash
-node kahoot-bot.js
+node index.js
 ```
 
 The bot will join the Kahoot game with 40 clients (customizable in the script) and respond to quiz events.
