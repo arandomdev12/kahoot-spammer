@@ -1,6 +1,6 @@
 # Kahoot Bot
 
-![Kahoot Bot in Action](https://imgur.com/trjCtRg)
+![Kahoot Bot in Action](https://i.ibb.co/hRPnZFR/opera-l-Hdb-R0f-LG5.gif)
 
 Welcome to the **Kahoot Bot**, a fun script for joining Kahoot games with multiple bots. This tool automates the process of joining a Kahoot game and answering questions randomly. Designed for educational purposes and to demonstrate automation capabilities.
 
