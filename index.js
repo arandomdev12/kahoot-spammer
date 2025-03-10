@@ -2,7 +2,7 @@ const Kahoot = require("kahoot.js-latest");
 
 
 
-CODE_TO_JOIN = 3158647;
+CODE_TO_JOIN = 9073599;
 PREFIX = "KahootBot";
 
 
@@ -17,7 +17,7 @@ function delay(ms) {
 async function main() {
   const clients = [];
 
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 10; i++) {
     const client = new Kahoot();
     clients.push(client);
 
