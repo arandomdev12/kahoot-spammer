@@ -2,7 +2,7 @@ const Kahoot = require("kahoot.js-latest");
 
 
 
-CODE_TO_JOIN = 9558258;
+CODE_TO_JOIN = 1552811;
 PREFIX = "ur moms ";
 
 
