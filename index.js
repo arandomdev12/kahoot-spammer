@@ -2,7 +2,7 @@ const Kahoot = require("kahoot.js-latest");
 
 
 
-CODE_TO_JOIN = 9073599;
+CODE_TO_JOIN = 411931;
 PREFIX = "KahootBot";
 
 
