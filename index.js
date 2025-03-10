@@ -2,8 +2,8 @@ const Kahoot = require("kahoot.js-latest");
 
 
 
-CODE_TO_JOIN = 9659546;
-PREFIX = "Bot";
+CODE_TO_JOIN = 5597010;
+PREFIX = "ur moms ";
 
 
 
@@ -17,14 +17,14 @@ function delay(ms) {
 async function main() {
   const clients = [];
 
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < 100; i++) {
     const client = new Kahoot();
     clients.push(client);
 
     // Set up listeners for each client
     setupListeners(client);
 
-    const username = PREFIX;
+    const username = PREFIX + (Math.floor(1000 + Math.random() * 9000)) + "boyfriend";
     client.join(CODE_TO_JOIN, username); // Replace 4122539 with your Kahoot game PIN
     await delay(250); // Stagger the joining process
   }
