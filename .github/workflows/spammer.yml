@@ -1,13 +1,14 @@
-name: Run Bot SPammer
+name: Run Bot Spammer
 
 on:
   push:
     paths:
-      - "data.json"  # Trigger workflow when data.json is updated
+      - "data.json"
 
 jobs:
   run-script:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -22,14 +23,11 @@ jobs:
 
       - name: Read variables from data.json
         run: |
-          echo "Reading variables from data.json"
           VARS=$(cat data.json)
           VAR1=$(echo $VARS | jq -r .var1)
           VAR2=$(echo $VARS | jq -r .var2)
           echo "VAR1: $VAR1"
           echo "VAR2: $VAR2"
 
-      - name: Run script with variables
-        run: |
-          echo "Running script with VAR1 and VAR2"
-          node index.js $VAR1 $VAR2
+      - name: Run script
+        run: node index.js $VAR1 $VAR2
