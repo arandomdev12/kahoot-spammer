@@ -6,12 +6,21 @@ on:
       - "data.json"
 
 jobs:
+  process-updates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Process data.json
+        run: cat data.json
+
   run-script:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
         uses: actions/setup-node@v3
@@ -30,4 +39,4 @@ jobs:
           echo "VAR2: $VAR2"
 
       - name: Run script
-        run: node index.js $VAR1 $VAR2
+        run: node index.js
