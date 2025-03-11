@@ -1,7 +1,9 @@
-name: Run Node.js Script
+name: Run Bot SPammer
 
 on:
-  workflow_dispatch:  # Allows manual trigger via API
+  push:
+    paths:
+      - "data.json"  # Trigger workflow when data.json is updated
 
 jobs:
   run-script:
@@ -18,5 +20,16 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run script
-        run: node index.js
+      - name: Read variables from data.json
+        run: |
+          echo "Reading variables from data.json"
+          VARS=$(cat data.json)
+          VAR1=$(echo $VARS | jq -r .var1)
+          VAR2=$(echo $VARS | jq -r .var2)
+          echo "VAR1: $VAR1"
+          echo "VAR2: $VAR2"
+
+      - name: Run script with variables
+        run: |
+          echo "Running script with VAR1 and VAR2"
+          node index.js $VAR1 $VAR2
