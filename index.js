@@ -2,8 +2,8 @@ const Kahoot = require("kahoot.js-latest");
 const fs = require('fs');
 
 
-
-CODE_TO_JOIN = 1552811;
+const data = JSON.parse(fs.readFileSync('data.json'));
+CODE_TO_JOIN = ${data.var1};
 PREFIX = "Student";
 
 
@@ -18,7 +18,7 @@ function delay(ms) {
 async function main() {
   const clients = [];
 
-  for (let i = 0; I < 5; i++) {
+  for (let i = 0; I < ${data.var2}; i++) {
     const client = new Kahoot();
     clients.push(client);
 
