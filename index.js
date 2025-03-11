@@ -18,7 +18,7 @@ function delay(ms) {
 async function main() {
   const clients = [];
 
-  for (let i = 0; I < ${data.var2}; i++) {
+  for (let i = 0; I < data.var2; i++) {
     const client = new Kahoot();
     clients.push(client);
 
