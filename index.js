@@ -3,7 +3,7 @@ const fs = require('fs');
 
 
 const data = JSON.parse(fs.readFileSync('data.json'));
-CODE_TO_JOIN = ${data.var1};
+CODE_TO_JOIN = data.var1;
 PREFIX = "Student";
 
 
