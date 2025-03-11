@@ -3,49 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update & Trigger Workflow</title>
-    <script defer>
-        document.addEventListener("DOMContentLoaded", () => {
-            const actionButton = document.getElementById("actionButton");
-            const backendUrl = "https://botspammer-backend.onrender.com"; // Replace with your actual Render backend URL
-
-            actionButton.addEventListener("click", async () => {
-                const var1 = document.getElementById("var1").value.trim();
-                const var2 = document.getElementById("var2").value.trim();
-
-                if (!var1 || !var2) {
-                    alert("❌ Please enter values for both variables.");
-                    return;
-                }
-
-                try {
-                    const response = await fetch(`${backendUrl}/update-and-trigger`, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ var1, var2 })
-                    });
-
-                    const data = await response.json();
-                    if (!response.ok) throw new Error(data.error || "Unknown error");
-
-                    alert("✅ Success: Variables updated & workflow triggered!");
-                } catch (error) {
-                    console.error("Error:", error);
-                    alert("❌ Failed: " + error.message);
-                }
-            });
-        });
-    </script>
+    <title>BOT SPAMMER</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f7f7f7;
+        }
+        h1 {
+            color: #333;
+        }
+        label {
+            margin-right: 10px;
+        }
+        input {
+            margin-bottom: 20px;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .message {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .error {
+            color: red;
+        }
+        .success {
+            color: green;
+        }
+    </style>
 </head>
 <body>
-    <h1>Update Variables & Trigger GitHub Workflow</h1>
 
-    <label>Game ID:</label>
-    <input type="text" id="var1" placeholder="Enter game id">
+    <h1>Update Variables and Trigger GitHub Workflow</h1>
 
-    <label># of bots:</label>
-    <input type="text" id="var2" placeholder="Enter amount of bots">
+    <label for="var1">Variable 1:</label>
+    <input type="text" id="var1" name="var1" placeholder="Enter value for gameid" required>
+    <br>
+    <label for="var2">Variable 2:</label>
+    <input type="text" id="var2" name="var2" placeholder="Enter value for bot amount" required>
+    <br>
 
-    <button id="actionButton">START THE SPAMMING</button>
+    <button onclick="updateAndTriggerWorkflow()">Submit</button>
+
+    <div class="message" id="message"></div>
+
+    <script>
+        async function updateAndTriggerWorkflow() {
+            const var1 = document.getElementById('var1').value;
+            const var2 = document.getElementById('var2').value;
+            const messageDiv = document.getElementById('message');
+
+            if (!var1 || !var2) {
+                messageDiv.innerHTML = "<span class='error'>Please fill in both fields.</span>";
+                return;
+            }
+
+            // Send POST request to backend to update variables and trigger workflow
+            try {
+                const response = await fetch('https://your-backend-url/update-and-trigger', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ var1, var2 }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    messageDiv.innerHTML = "<span class='success'>" + data.message + "</span>";
+                } else {
+                    messageDiv.innerHTML = "<span class='error'>" + data.error + "</span>";
+                }
+            } catch (error) {
+                messageDiv.innerHTML = "<span class='error'>An error occurred: " + error.message + "</span>";
+            }
+        }
+    </script>
+
 </body>
 </html>
