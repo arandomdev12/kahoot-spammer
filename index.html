@@ -3,37 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kahoot Bot Spammer</title>
+    <title>Update & Trigger Workflow</title>
+    <script defer>
+        document.addEventListener("DOMContentLoaded", () => {
+            const actionButton = document.getElementById("actionButton");
+            const backendUrl = "https://botspammer-backend.onrender.com"; // Replace with your actual Render backend URL
+
+            actionButton.addEventListener("click", async () => {
+                const var1 = document.getElementById("var1").value.trim();
+                const var2 = document.getElementById("var2").value.trim();
+
+                if (!var1 || !var2) {
+                    alert("❌ Please enter values for both variables.");
+                    return;
+                }
+
+                try {
+                    const response = await fetch(`${backendUrl}/update-and-trigger`, {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ var1, var2 })
+                    });
+
+                    const data = await response.json();
+                    if (!response.ok) throw new Error(data.error || "Unknown error");
+
+                    alert("✅ Success: Variables updated & workflow triggered!");
+                } catch (error) {
+                    console.error("Error:", error);
+                    alert("❌ Failed: " + error.message);
+                }
+            });
+        });
+    </script>
 </head>
 <body>
-    <h2>KAHOOT BOT SPAMMER</h2>
-    <input type="text" id="var1" placeholder="Type in your game id">
-    <input type="text" id="var2" placeholder="Amount of bots">
-    <button onclick="updateVariables()">Start bot spam</button>
+    <h1>Update Variables & Trigger GitHub Workflow</h1>
 
-    <script>
-        async function updateVariables() {
-            const var1 = document.getElementById('var1').value;
-            const var2 = document.getElementById('var2').value;
+    <label>Variable 1:</label>
+    <input type="text" id="var1" placeholder="Enter value 1">
 
-            try {
-                // Send values to the backend (Render)
-                const response = await fetch('https://botspammer-backend.onrender.com/update', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ var1, var2 })
-                });
+    <label>Variable 2:</label>
+    <input type="text" id="var2" placeholder="Enter value 2">
 
-                if (response.ok) {
-                    alert("Bot spam started!");
-                } else {
-                    alert("Error triggering bot spam.");
-                }
-            } catch (error) {
-                console.error("Request failed:", error);
-                alert("Failed to connect to backend.");
-            }
-        }
-    </script>
+    <button id="actionButton">Update & Trigger</button>
 </body>
 </html>
